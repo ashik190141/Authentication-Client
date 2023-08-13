@@ -81,12 +81,12 @@ const GetEmail = ({ showModal, handleCloseModal }) => {
                             required: true,
                             minLength: 6,
                             maxLength: 10,
-                            // pattern: new RegExp(/(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?])(?=.*[A-Z])/)
+                            pattern: new RegExp(/(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?])(?=.*[A-Z])/)
                         })}
                                 placeholder="Reset Password" className="p-2 border-b-2 border-black" />
                             {errors.password?.type === "required" && <p className="text-red-600">Password is required</p>}
                             {errors.password?.type === "minLength" && <p className="text-red-600">Minimum six characters are required</p>}
-                            {/* {errors.password?.type === "pattern" && <p className="text-red-600">Password must have one Capital letter and one special Character</p>} */}
+                            {errors.password?.type === "pattern" && <p className="text-red-600">Password must have one Capital letter and one special Character</p>}
                     </div>}
                     {resetPass && <div className="form-control">
                         <input type="password" name="confirmPassword" {...register("confirmPassword", {required:true})}

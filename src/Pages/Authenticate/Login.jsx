@@ -17,14 +17,17 @@ const Login = () => {
         setShowModal(false);
     }
 
-    const onSubmit = data => {
+    const onSubmit = (data) => {
+        console.log('find');
 
         let user_name= data.name
         let password = data.password
+        console.log(user_name, password);
 
         fetch(`https://student-info-iota.vercel.app/users/${user_name}`)
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 if (data.user_name===user_name && data.password===password) {
                     Swal.fire({
                         position: 'top-end',
@@ -35,9 +38,9 @@ const Login = () => {
                     })
                     navigate('/first');
                 }
-                else {
+                else if(data.message){
                     Swal.fire({
-                        title: 'username and password is not match',
+                        title: 'username not found',
                         showClass: {
                             popup: 'animate__animated animate__fadeInDown'
                         },
