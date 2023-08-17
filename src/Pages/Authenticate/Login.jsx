@@ -28,7 +28,8 @@ const Login = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.user_name===user_name && data.password===password) {
+                if (data.user_name === user_name && data.password === password) {
+                    localStorage.setItem('99_user', JSON.stringify(data.user_name));
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -36,7 +37,7 @@ const Login = () => {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    navigate('/first');
+                    navigate('/post');
                 }
                 else if(data.message){
                     Swal.fire({

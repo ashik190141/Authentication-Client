@@ -1,9 +1,9 @@
 import React from 'react';
 import useTitle from '../../hooks/useTitle';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const First = () => {
-    useTitle('Dashboard');
+    useTitle('Post');
     const navigate = useNavigate();
     const logout = () => {
         navigate('/');
@@ -20,11 +20,13 @@ const First = () => {
                         
                     </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">Dashboard</a>
+                    <a className="btn btn-ghost normal-case text-xl">ATG</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                    
+                    <ul className="menu menu-horizontal px-1 flex gap-5">
+                        <Link to="/post"><button className='btn btn-link text-white hover:text-orange-500'>Posts</button></Link>
+                        <Link to="/post/createPost"><button className='btn btn-link text-white hover:text-orange-500'>Create Post</button></Link>
+                        <Link to="/post/myPost"><button className='btn btn-link text-white hover:text-orange-500'>My Post</button></Link>
                     </ul>
                 </div>
                 <div className="navbar-end font-bold mr-20">
