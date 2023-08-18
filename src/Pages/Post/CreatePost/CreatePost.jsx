@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 const CreatePost = () => {
     useTitle('Create Post');
     const user = JSON.parse(localStorage.getItem('99_user'));
-    const [cnt, setCount] = useState(400);
+    const [cnt, setCount] = useState(200);
     const [disable, setDisable] = useState(true);
     const navigate = useNavigate();
     console.log(user);
@@ -15,7 +15,7 @@ const CreatePost = () => {
     const handleInput = (e) => {
         let n = e.target.value;
         console.log(n.length);
-        let requiredLength = 400 - n.length;
+        let requiredLength = 200 - n.length;
         if (requiredLength <= 0) {
             setDisable(false);
         } else {
@@ -88,7 +88,7 @@ const CreatePost = () => {
                         <div className="form-control w-full mb-3">
                             <label>
                                 <input type="text" name="name"
-                                    placeholder="Your Name"
+                                    placeholder="Your Name" required
                                     className="input border-olive-lightgreen w-full bg-slate-100" />
                             </label>
                         </div>
