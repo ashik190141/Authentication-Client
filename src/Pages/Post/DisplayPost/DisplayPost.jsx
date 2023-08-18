@@ -8,7 +8,7 @@ const DisplayPost = () => {
     useTitle('Posts');
     const user = JSON.parse(localStorage.getItem('99_user'));
 
-    const url = `http://localhost:5000/posts`
+    const url = `https://student-info-iota.vercel.app/posts`
     
     const {data: posts = [], refetch} = useQuery(['posts'], async () => {
         const res = await fetch(url)
@@ -21,7 +21,7 @@ const DisplayPost = () => {
                 userId: user,
                 name: user,
             }
-            fetch(`http://localhost:5000/like/${id}`, {
+            fetch(`https://student-info-iota.vercel.app/like/${id}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
@@ -41,7 +41,7 @@ const DisplayPost = () => {
                 userId: user,
                 name: user,
             }
-            fetch(`http://localhost:5000/unlike/${id}`, {
+            fetch(`https://student-info-iota.vercel.app/unlike/${id}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
@@ -71,7 +71,7 @@ const DisplayPost = () => {
             name: user
         }
 
-        fetch(`http://localhost:5000/feedback/${id}`, {
+        fetch(`https://student-info-iota.vercel.app/feedback/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

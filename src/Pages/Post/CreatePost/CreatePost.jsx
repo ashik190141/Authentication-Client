@@ -52,7 +52,7 @@ const CreatePost = () => {
             username    
         };
 
-        fetch('http://localhost:5000/posts', {
+        fetch('https://student-info-iota.vercel.app/posts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

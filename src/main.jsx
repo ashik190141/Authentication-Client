@@ -59,7 +59,7 @@ const router = createBrowserRouter([
       {
         path: 'updatePost/:id',
         element: <UpdatePost></UpdatePost>,
-        loader: ({params}) => fetch(`http://localhost:5000/post/${params.id}`)
+        loader: ({params}) => fetch(`https://student-info-iota.vercel.app/post/${params.id}`)
       }
     ]
   }

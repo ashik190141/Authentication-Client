@@ -9,7 +9,7 @@ const MyPost = () => {
     const user = JSON.parse(localStorage.getItem('99_user'));
 
     
-    const url = `http://localhost:5000/specificPost?username=${user}`;
+    const url = `https://student-info-iota.vercel.app/specificPost?username=${user}`;
 
     const {data: posts = [], refetch} = useQuery(['posts'], async () => {
         const res = await fetch(url)
@@ -27,7 +27,7 @@ const MyPost = () => {
             confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/post/${id}`, {
+                fetch(`https://student-info-iota.vercel.app/post/${id}`, {
                     method: 'DELETE'
                 })
                 .then(res => res.json())
