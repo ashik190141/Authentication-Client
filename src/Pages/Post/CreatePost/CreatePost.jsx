@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 const CreatePost = () => {
     useTitle('Create Post');
-    const user = JSON.parse(localStorage.getItem('99_user'));
+    
     const [cnt, setCount] = useState(200);
     const [disable, setDisable] = useState(true);
     const navigate = useNavigate();

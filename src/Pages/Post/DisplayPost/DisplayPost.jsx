@@ -6,7 +6,7 @@ import DisplayEveryPost from './DisplayEveryPost';
 
 const DisplayPost = () => {
     useTitle('Posts');
-    const user = JSON.parse(localStorage.getItem('99_user'));
+    
 
     const url = `https://student-info-iota.vercel.app/posts`
     
