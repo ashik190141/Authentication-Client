@@ -63,7 +63,7 @@ const CreatePost = () => {
             .then(data => {
                 if (data.insertedId) {
                     Swal.fire({
-                        title: `Successfully Post Your Blog`,
+                        title: `Successfully Create Your Post`,
                         icon: 'success',
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',

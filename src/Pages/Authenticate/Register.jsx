@@ -36,7 +36,9 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(data => {
-            if (data.insertedId) {
+                if (data.insertedId) {
+                console.log(saveUser.user_name);
+                localStorage.setItem('99_user', JSON.stringify(saveUser.user_name));
                 Swal.fire({
                     title: `Registration Successful`,
                     icon: 'success',
@@ -45,7 +47,7 @@ const Register = () => {
                     confirmButtonText: 'OK'
                 }).then(result => {
                     if (result.isConfirmed) {
-                        navigate('/first');
+                        navigate('/post');
                     }
                 })
             }

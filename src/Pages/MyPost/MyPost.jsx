@@ -7,6 +7,8 @@ import useTitle from "../../hooks/useTitle";
 const MyPost = () => {
     useTitle('My Posts');
     const user = JSON.parse(localStorage.getItem('99_user'));
+
+    
     const url = `http://localhost:5000/specificPost?username=${user}`;
 
     const {data: posts = [], refetch} = useQuery(['posts'], async () => {
