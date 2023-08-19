@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import useTitle from "../../hooks/useTitle";
 
 
-const MyPost = () => {
+const MyPost = ({user}) => {
     useTitle('My Posts');
     
 

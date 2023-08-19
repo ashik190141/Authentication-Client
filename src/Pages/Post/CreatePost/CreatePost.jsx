@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 const CreatePost = () => {
     useTitle('Create Post');
-    ;
+    
     // const [cnt, setCount] = useState(200);
     // const [disable, setDisable] = useState(true);
     const navigate = useNavigate();

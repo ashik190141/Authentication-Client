@@ -6,7 +6,7 @@ const First = () => {
     useTitle('Post');
     const navigate = useNavigate();
     const logout = () => {
-        setUser(null);
+        setUser(false)
         navigate('/');
     }
     return (
