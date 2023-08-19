@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 import useTitle from '../../../hooks/useTitle';
 import DisplayEveryPost from './DisplayEveryPost';
 
 const DisplayPost = () => {
     useTitle('Posts');
-    const user = JSON.parse(localStorage.getItem('99_user'));
+    
 
     const url = `https://student-info-iota.vercel.app/posts`
     
@@ -81,16 +81,15 @@ const DisplayPost = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    toast.success('Send Feedback Successfully', {
-                        position: "top-right",
-                        autoClose: 2000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "light",
-                    });
+                    Swal.fire({
+                        title: 'Send Feedback Successfully',
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    })
                     form.reset();
                     refetch();
                     // setBlogs(blogs);
@@ -108,7 +107,6 @@ const DisplayPost = () => {
                     handleGiveFeedback={handleGiveFeedback}>
                 </DisplayEveryPost>)
             }
-            <ToastContainer />
         </div>
     );
 };

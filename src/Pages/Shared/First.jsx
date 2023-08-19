@@ -6,7 +6,7 @@ const First = () => {
     useTitle('Post');
     const navigate = useNavigate();
     const logout = () => {
-        localStorage.removeItem("99_user");
+        setUser(null);
         navigate('/');
     }
     return (

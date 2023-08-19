@@ -6,7 +6,7 @@ import useTitle from "../../hooks/useTitle";
 
 const MyPost = () => {
     useTitle('My Posts');
-    const user = JSON.parse(localStorage.getItem('99_user'));
+    
 
     
     const url = `https://student-info-iota.vercel.app/specificPost?username=${user}`;
