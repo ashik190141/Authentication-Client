@@ -10,7 +10,7 @@ const CreatePost = () => {
     // const [cnt, setCount] = useState(200);
     // const [disable, setDisable] = useState(true);
     const navigate = useNavigate();
-    console.log(user);
+    
 
     // const handleInput = (e) => {
     //     let n = e.target.value;
