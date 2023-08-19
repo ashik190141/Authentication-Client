@@ -29,7 +29,7 @@ const Login = () => {
             .then(data => {
                 console.log(data);
                 if (data.user_name === user_name && data.password === password) {
-                    
+                    localStorage.setItem('99_user', JSON.stringify(data.user_name));
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',

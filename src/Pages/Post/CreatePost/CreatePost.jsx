@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useTitle from '../../../hooks/useTitle';
 import moment from 'moment';
@@ -6,23 +6,23 @@ import Swal from 'sweetalert2';
 
 const CreatePost = () => {
     useTitle('Create Post');
-    
-    const [cnt, setCount] = useState(200);
-    const [disable, setDisable] = useState(true);
+    const user = JSON.parse(localStorage.getItem('99_user'));
+    // const [cnt, setCount] = useState(200);
+    // const [disable, setDisable] = useState(true);
     const navigate = useNavigate();
     console.log(user);
 
-    const handleInput = (e) => {
-        let n = e.target.value;
-        console.log(n.length);
-        let requiredLength = 200 - n.length;
-        if (requiredLength <= 0) {
-            setDisable(false);
-        } else {
-            setDisable(true);
-        }
-        setCount(requiredLength);
-    }
+    // const handleInput = (e) => {
+    //     let n = e.target.value;
+    //     console.log(n.length);
+    //     let requiredLength = 200 - n.length;
+    //     if (requiredLength <= 0) {
+    //         setDisable(false);
+    //     } else {
+    //         setDisable(true);
+    //     }
+    //     setCount(requiredLength);
+    // }
 
 
     const handleSubmitBlog = event => {
@@ -102,16 +102,16 @@ const CreatePost = () => {
                         <div className="form-control w-full mb-8">
                             <label>
                                 <textarea type="text" name="blog" required
-                                    placeholder="Post" onChange={handleInput}
+                                    placeholder="Post"
                                     className="input border-olive-lightgreen text-justify my-1 w-full h-80 bg-slate-100" />
                             </label>
                         </div>
-                        <div className={`form-control w-full mb-8 ${cnt<=0 ? 'hidden':'block'}`}>
+                        {/* <div className={`form-control w-full mb-8 ${cnt<=0 ? 'hidden':'block'}`}>
                             <p className='text-red-500 font-bold'>* Must have {cnt} characters</p>
-                        </div>
+                        </div> */}
 
                         <div className="form-control w-24 mb-2">
-                            <input type="submit" value="Post" disabled={disable}
+                            <input type="submit" value="Post"
                             className={`btn bg-lightorange border-none text-white btn-primary w-full}`}/>
                         </div>
                     </div>
