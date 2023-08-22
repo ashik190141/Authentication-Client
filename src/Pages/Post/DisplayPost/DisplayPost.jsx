@@ -1,18 +1,20 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useTitle from '../../../hooks/useTitle';
 import DisplayEveryPost from './DisplayEveryPost';
 
 const DisplayPost = () => {
     useTitle('Posts');
-    
+    const [axiosSecure] = useAxiosSecure();
+    const user = JSON.parse(localStorage.getItem('99_user'));
 
-    const url = `https://student-info-iota.vercel.app/posts`
+    // const url = `https://student-info-iota.vercel.app/posts`
     
     const {data: posts = [], refetch} = useQuery(['posts'], async () => {
-        const res = await fetch(url)
-        return res.json();
+        const res = await axiosSecure.get('http://localhost:5000/posts')
+        return res.data;
     })
 
     const handleLike = (id, user, like) => {
@@ -21,10 +23,11 @@ const DisplayPost = () => {
                 userId: user,
                 name: user,
             }
-            fetch(`https://student-info-iota.vercel.app/like/${id}`, {
+            fetch(`http://localhost:5000/like/${id}`, {
                 method: 'PUT',
                 headers: {
-                    'content-type': 'application/json'
+                    'content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('media-post-token')}`
                 },
                 body: JSON.stringify(giveLike)
             })
@@ -41,10 +44,11 @@ const DisplayPost = () => {
                 userId: user,
                 name: user,
             }
-            fetch(`https://student-info-iota.vercel.app/unlike/${id}`, {
+            fetch(`http://localhost:5000/unlike/${id}`, {
                 method: 'PUT',
                 headers: {
-                    'content-type': 'application/json'
+                    'content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('media-post-token')}`
                 },
                 body: JSON.stringify(giveUnLike)
             })
@@ -71,10 +75,11 @@ const DisplayPost = () => {
             name: user
         }
 
-        fetch(`https://student-info-iota.vercel.app/feedback/${id}`, {
+        fetch(`http://localhost:5000/feedback/${id}`, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('media-post-token')}`
             },
             body: JSON.stringify(giveFeedback)
         })

@@ -1,19 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useTitle from "../../hooks/useTitle";
 
 
-const MyPost = ({user}) => {
+const MyPost = () => {
     useTitle('My Posts');
-    
+    const user = JSON.parse(localStorage.getItem('99_user'));
+    const [axiosSecure] = useAxiosSecure();
 
     
-    const url = `https://student-info-iota.vercel.app/specificPost?username=${user}`;
+    // const url = `http://localhost:5000/specificPost?username=${user}`;
 
     const {data: posts = [], refetch} = useQuery(['posts'], async () => {
-        const res = await fetch(url)
-        return res.json();
+        const res = await axiosSecure.get(`http://localhost:5000/specificPost?username=${user}`)
+        return res.data;
     })
 
     const handleDelete = id => {
@@ -27,8 +29,11 @@ const MyPost = ({user}) => {
             confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://student-info-iota.vercel.app/post/${id}`, {
-                    method: 'DELETE'
+                fetch(`http://localhost:5000/post/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('media-post-token')}`
+                    }
                 })
                 .then(res => res.json())
                 .then(data => {

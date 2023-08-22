@@ -38,17 +38,31 @@ const Register = () => {
             .then(data => {
                 if (data.insertedId) {
                 console.log(saveUser.user_name);
-                
-                Swal.fire({
-                    title: `Registration Successful`,
-                    icon: 'success',
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'OK'
-                }).then(result => {
-                    if (result.isConfirmed) {
-                        navigate('/post');
-                    }
+                localStorage.setItem('99_user', JSON.stringify(saveUser.user_name));
+                const user = {
+                    username: saveUser.user_name
+                }
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user) 
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('media-post-token', data.token);
+                        Swal.fire({
+                            title: `Registration Successful`,
+                            icon: 'success',
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'OK'
+                        }).then(result => {
+                            if (result.isConfirmed) {
+                                navigate('/post');
+                            }
+                        })
                 })
             }
             else if (data.message) {

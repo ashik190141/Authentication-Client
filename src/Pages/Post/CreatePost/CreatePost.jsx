@@ -6,11 +6,11 @@ import Swal from 'sweetalert2';
 
 const CreatePost = () => {
     useTitle('Create Post');
-    
+    const user = JSON.parse(localStorage.getItem('99_user'));
     // const [cnt, setCount] = useState(200);
     // const [disable, setDisable] = useState(true);
     const navigate = useNavigate();
-    
+    console.log(user);
 
     // const handleInput = (e) => {
     //     let n = e.target.value;
@@ -52,10 +52,11 @@ const CreatePost = () => {
             username    
         };
 
-        fetch('https://student-info-iota.vercel.app/posts', {
+        fetch('http://localhost:5000/posts', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('media-post-token')}`
             },
             body: JSON.stringify(blogInfo)
         })

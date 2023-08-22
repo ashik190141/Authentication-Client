@@ -30,14 +30,26 @@ const Login = () => {
                 console.log(data);
                 if (data.user_name === user_name && data.password === password) {
                     localStorage.setItem('99_user', JSON.stringify(data.user_name));
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Successfully Login',
-                        showConfirmButton: false,
-                        timer: 1500
+                    const user = { username: data.user_name };
+                    fetch('http://localhost:5000/jwt', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(user) 
                     })
-                    navigate('/post');
+                        .then(res => res.json())
+                        .then(data => {
+                            localStorage.setItem('media-post-token', data.token);
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Successfully Login',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            navigate('/post');
+                    })
                 }
                 else if(data.message){
                     Swal.fire({
