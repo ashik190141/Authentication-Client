@@ -31,7 +31,7 @@ const Login = () => {
                 if (data.user_name === user_name && data.password === password) {
                     localStorage.setItem('99_user', JSON.stringify(data.user_name));
                     const user = { username: data.user_name };
-                    fetch('http://localhost:5000/jwt', {
+                    fetch('https://student-info-iota.vercel.app/jwt', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

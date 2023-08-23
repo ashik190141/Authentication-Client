@@ -14,7 +14,7 @@ const MyPost = () => {
     // const url = `http://localhost:5000/specificPost?username=${user}`;
 
     const {data: posts = [], refetch} = useQuery(['posts'], async () => {
-        const res = await axiosSecure.get(`http://localhost:5000/specificPost?username=${user}`)
+        const res = await axiosSecure.get(`https://student-info-iota.vercel.app/specificPost?username=${user}`)
         return res.data;
     })
 
@@ -29,7 +29,7 @@ const MyPost = () => {
             confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/post/${id}`, {
+                fetch(`https://student-info-iota.vercel.app/post/${id}`, {
                     method: 'DELETE',
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('media-post-token')}`

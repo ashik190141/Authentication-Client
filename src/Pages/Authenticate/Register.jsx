@@ -42,7 +42,7 @@ const Register = () => {
                 const user = {
                     username: saveUser.user_name
                 }
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://student-info-iota.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

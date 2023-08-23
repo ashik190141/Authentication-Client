@@ -13,7 +13,7 @@ const DisplayPost = () => {
     // const url = `https://student-info-iota.vercel.app/posts`
     
     const {data: posts = [], refetch} = useQuery(['posts'], async () => {
-        const res = await axiosSecure.get('http://localhost:5000/posts')
+        const res = await axiosSecure.get('https://student-info-iota.vercel.app/posts')
         return res.data;
     })
 

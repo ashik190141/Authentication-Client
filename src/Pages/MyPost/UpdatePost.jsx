@@ -24,7 +24,7 @@ const UpdatePost = () => {
             blog
         };
 
-        fetch(`http://localhost:5000/post/${id}`,{
+        fetch(`https://student-info-iota.vercel.app/post/${id}`,{
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
