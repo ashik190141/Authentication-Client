@@ -23,7 +23,7 @@ const DisplayPost = () => {
                 userId: user,
                 name: user,
             }
-            fetch(`http://localhost:5000/like/${id}`, {
+            fetch(`https://student-info-iota.vercel.app/like/${id}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json',
@@ -44,7 +44,7 @@ const DisplayPost = () => {
                 userId: user,
                 name: user,
             }
-            fetch(`http://localhost:5000/unlike/${id}`, {
+            fetch(`https://student-info-iota.vercel.app/unlike/${id}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json',
@@ -75,7 +75,7 @@ const DisplayPost = () => {
             name: user
         }
 
-        fetch(`http://localhost:5000/feedback/${id}`, {
+        fetch(`https://student-info-iota.vercel.app/feedback/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
